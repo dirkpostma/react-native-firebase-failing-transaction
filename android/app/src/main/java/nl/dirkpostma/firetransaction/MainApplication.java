@@ -1,4 +1,4 @@
-package com.firetransaction;
+package nl.dirkpostma.firetransaction;
 
 import android.app.Application;
 import android.content.Context;

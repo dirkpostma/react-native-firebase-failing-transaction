@@ -2,6 +2,7 @@ import firestore from '@react-native-firebase/firestore';
 
 const db = firestore();
 let logText = '';
+let logLine = 0;
 
 async function asyncWait(ms) {
   return new Promise(resolve => {
@@ -11,6 +12,7 @@ async function asyncWait(ms) {
 
 const getTimeStamp = () => {
   const d = new Date();
+  logLine++;
   const datestring =
     // ('0' + d.getDate()).slice(-2) +
     // '-' +
@@ -18,6 +20,8 @@ const getTimeStamp = () => {
     // '-' +
     // d.getFullYear() +
     // ' ' +
+    ('0' + logLine).slice(-3) +
+    '. ' +
     ('0' + d.getHours()).slice(-2) +
     ':' +
     ('0' + d.getMinutes()).slice(-2) +
@@ -35,7 +39,6 @@ const log = message => {
 };
 
 const createMove = async (uid, matchId, turn, delay = 0) => {
-  console.log('createMove', {uid, matchId, turn, delay});
   log(`createMove ${uid} turn: ${turn}`);
   const matchRef = db.collection('matches').doc(matchId);
 
@@ -43,6 +46,7 @@ const createMove = async (uid, matchId, turn, delay = 0) => {
     log(`BEGIN transaction ${uid} turn: ${turn}`);
     // READ
     log(`READ BEGIN ${uid}`);
+    await asyncWait(delay);
     const match = await transaction.get(matchRef);
     const matchData = match.data();
     log(`READ DONE ${uid} - turn: ${matchData.turn}`);
@@ -62,7 +66,6 @@ const createMove = async (uid, matchId, turn, delay = 0) => {
     };
     const scoreField = `score_${uid}`;
     updateObject[scoreField] = newScore;
-    console.log('WRITE', {uid, updateObject});
     log(
       `WRITE ${uid} - turn: ${updateObject.turn} ${scoreField}: ${
         updateObject[scoreField]
@@ -86,13 +89,18 @@ export const testTransaction = async () => {
     turn: 0,
     score_user_1: 0,
     score_user_2: 0,
+    // score_user_3: 0,
+    // score_user_4: 0,
   });
 
   // Simulate two players trying to perform a turn
   // With different simulated roundtrip delays
+  // To simulate even more users, add more items to the promises array
   const promises = [
-    createMove('user_1', matchId, 0, 100),
-    createMove('user_2', matchId, 0, 20),
+    createMove('user_1', matchId, 0, 10),
+    createMove('user_2', matchId, 0, 300),
+    // createMove('user_3', matchId, 0, 10),
+    // createMove('user_4', matchId, 0, 400),
   ];
 
   try {

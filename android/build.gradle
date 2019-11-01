@@ -3,7 +3,12 @@
 buildscript {
     ext {
         buildToolsVersion = "28.0.3"
-        minSdkVersion = 16
+
+        // Increased from 16 to 21 to prevent multidex error
+        // D8: Cannot fit requested classes in a single dex file
+        // https://stackoverflow.com/questions/55591958/flutter-firestore-causing-d8-cannot-fit-requested-classes-in-a-single-dex-file/55592012
+        minSdkVersion = 21
+        
         compileSdkVersion = 28
         targetSdkVersion = 28
     }
@@ -13,6 +18,7 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.2")
+        classpath 'com.google.gms:google-services:4.3.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

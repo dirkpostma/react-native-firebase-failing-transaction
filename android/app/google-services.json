@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "683882190332",
+    "firebase_url": "https://nl-dirkpostma-firetransaction.firebaseio.com",
+    "project_id": "nl-dirkpostma-firetransaction",
+    "storage_bucket": "nl-dirkpostma-firetransaction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683882190332:android:309986c0dcb06680070e79",
+        "android_client_info": {
+          "package_name": "nl.dirkpostma.firetransaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683882190332-ok9hcdivrok5mofgeudi3arfknnb2qdt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nl.dirkpostma.firetransaction",
+            "certificate_hash": "f5dd0f32a35de2df3f5ba79e3a6b91e943f53421"
+          }
+        },
+        {
+          "client_id": "683882190332-88ls8m6lrb18gtrtdiv9r0jsrifjgc8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiTrGyCTuXutsc1myL6QUkq_168OjuD2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683882190332-88ls8m6lrb18gtrtdiv9r0jsrifjgc8p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "683882190332-f9fp0cfpolr184e2mf70oflp3bd8pn83.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "nl.dirkpostma.firetransaction"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
