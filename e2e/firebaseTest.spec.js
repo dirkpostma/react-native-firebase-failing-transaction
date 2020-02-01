@@ -5,13 +5,12 @@ describe('Firebase', () => {
     await device.reloadReactNative();
   });
 
-  it('can create item after tap', async () => {
-    await element(by.id('create_button')).tap();
-    // await expect(element(by.text('Hello!!!'))).toBeVisible();
-  });
+  it('will pass transaction test', async () => {
+    await element(by.id('test_transaction_button')).tap();
+    await waitFor(element(by.text('TEST PASSED')))
+      .toBeVisible()
+      .withTimeout(3000);
 
-  it('can delete item after tap', async () => {
-    await element(by.id('delete_button')).tap();
-    // await expect(element(by.text('Hello!!!'))).toBeVisible();
+    await expect(element(by.text('TEST PASSED'))).toBeVisible();
   });
 });

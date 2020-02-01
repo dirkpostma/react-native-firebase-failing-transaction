@@ -21,7 +21,19 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {testTransaction} from './src/api';
 
+const performTest = async setResult => {
+  setResult('TEST PENDING...');
+  const expectedResult = '{"score_user_1":0,"score_user_2":1,"turn":1}'; 
+  const result = await testTransaction();
+  if (result === expectedResult) {
+    setResult('TEST PASSED');
+  } else {
+    setResult(`TEST FAILED\nexpected: ${expectedResult},\nactual: ${result}`);
+  }
+};
+
 const App = () => {
+  const [result, setResult] = useState('TEST PENDING');
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -34,8 +46,9 @@ const App = () => {
             <Button
               testID="test_transaction_button"
               title="Test transaction"
-              onPress={() => testTransaction()}
+              onPress={() => performTest(setResult)}
             />
+            <Text>{result}</Text>
           </View>
         </View>
       </SafeAreaView>

@@ -1,6 +1,17 @@
 # react-native-firebase-failing-transaction
 React Native project where transaction fails
 
+## Install
+
+```bash
+git clone git@github.com:dirkpostma/react-native-firebase-failing-transaction.git
+cd react-native-firebase-failing-transaction
+yarn
+cd ios; pod install; cd ..
+yarn run detox build -c ios.sim.debug
+open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
+yarn run detox test -c ios.sim.debug
+```
 
 <!---
 Hello there you awesome person;

@@ -89,18 +89,14 @@ export const testTransaction = async () => {
     turn: 0,
     score_user_1: 0,
     score_user_2: 0,
-    // score_user_3: 0,
-    // score_user_4: 0,
   });
 
   // Simulate two players trying to perform a turn
   // With different simulated roundtrip delays
   // To simulate even more users, add more items to the promises array
   const promises = [
-    createMove('user_1', matchId, 0, 10),
-    createMove('user_2', matchId, 0, 300),
-    // createMove('user_3', matchId, 0, 10),
-    // createMove('user_4', matchId, 0, 400),
+    createMove('user_1', matchId, 0, 100),
+    createMove('user_2', matchId, 0, 20),
   ];
 
   try {
@@ -111,6 +107,8 @@ export const testTransaction = async () => {
 
   await asyncWait(500);
   const newMatch = await matchRef.get();
-  log(`RESULT ${JSON.stringify(newMatch.data())}`);
+  const result = JSON.stringify(newMatch.data());
+  log(`RESULT ${result}`);
   console.log(logText);
+  return result;
 };
